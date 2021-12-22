@@ -1,8 +1,9 @@
 //类型注解: 自己写类型注解
 //类型推断: ts 自动分析变量类型
 //1.基本类型: string, number, boolean, null, undefined, symbol, void
+/*
 let count: number = 123;
-let str: string = 'hello';
+let str1: string = 'hello';
 let isDone: boolean = true;
 let temp: number | string = 123;
 temp = 'theory';
@@ -17,8 +18,8 @@ const teacher: {
 };
 
 // have qs ???
-class Person {}
-const p1: Person = new Person();
+class Person1 {}
+const p1: Person1 = new Person1();
 
 const getTotal1: (str: string) => number = str => parseInt(str, 10);
 const getTotal2 = (str: string): number => parseInt(str, 10);
@@ -39,3 +40,5 @@ type User = { name: string; age: number };
 const arr4: User[] = [{ name: 'Damon', age: 18 }];
 //tuple 元组
 const t1: [string, string, number] = ['a', 'b', 1];
+
+*/
