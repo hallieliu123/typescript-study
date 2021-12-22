@@ -1,3 +1,4 @@
+/*
 //1. 访问类型: public, private, protected
 class Person1 {
   public name1: string;
@@ -87,3 +88,4 @@ class Person5 {
 }
 const p7 = Person5.getInstance();
 const p8 = Person5.getInstance();
+*/
