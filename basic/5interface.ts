@@ -1,5 +1,5 @@
 
-//interface中的 ? readonly [prop: string]: any, function 
+//1. interface中的 ? readonly [prop: string]: any, function 
 interface Person {
   readonly name: string,
   age?: number,
@@ -7,7 +7,7 @@ interface Person {
   greet(): string,
 }
 
-// 字面量传参 和 变量形式传参 区别
+//2. 字面量传参 和 变量传参 区别
 const person = {
   name: 'Amy',
   age: 18, 
@@ -27,7 +27,7 @@ const setName = (person: Person): void => {
 getName(person);
 // getName({name: 'Amy', degree: 'PHD', greet: () => ''}); //在interface没有[propName: string]: any时,自面量传参不能有多出interface的属性
 
-// class 应用 interface, class中必须包含 interface 中必须的属性
+//3. class 应用 interface, class中必须包含 interface 中必须的属性
 class User2 implements Person {
   name = 'Sheldon';
   greet:() => 'hell world';
@@ -35,7 +35,7 @@ class User2 implements Person {
   height = 185;
 }
 
-// interface 继承 interface, 新的interface也包含被继承的interface
+//4. interface 继承 interface, 新的interface也包含被继承的interface
 interface Teacher extends Person {
   teach(): string,
 }
@@ -45,7 +45,7 @@ const teacher: Teacher = {
   greet: () => '',
 };
 
-// interface 定义 函数类型
+//5. interface 定义 函数类型
 interface SaySth {
   (word: string): string,
 }

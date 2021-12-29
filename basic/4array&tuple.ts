@@ -12,8 +12,8 @@ const arr5: User[] = [{name: 'Tom', age: 18}, {name: 'Lily', age: 18}];
 
   // 或
 class User1 {
-  name: string;
-  age: number;
+  name: string
+  age: number
 }
 const arr6: User1[] = [
   new User1(),
@@ -21,7 +21,7 @@ const arr6: User1[] = [
   {name: 'Lily', age: 18}
 ];
 
-// 元祖类型注解; 元组是长度有限的数组每一项类型固定
+// 元组类型注解; 元组是长度有限的数组,并且其每一项类型固定
 
 const arr7: [string, string, number, User1] = ['a', 'b', 1, {name: 'Ella', age: 18}];
 

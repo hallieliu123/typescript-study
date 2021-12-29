@@ -3,7 +3,7 @@
     a/ typescript 是 javascript 的一个超集（像 es6 是 es5的超集一样.)
     b/ 代码编写时一些错误，js只在运行时才会报出，ts在编写时就会提示.
     c/ ts的数据类型声明，使得代码更易阅读.
-    d/ typescript只是一个帮助我们做语法校验的工具,编译之后就是纯js代码
+    d/ typescript只是一个帮助我们做 语法校验 的工具,编译之后就是纯js代码
 */
 
 // 1. 基础类型: number, string, null, undefined, boolean, symbol, void;
