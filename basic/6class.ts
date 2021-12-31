@@ -91,6 +91,8 @@ const p3 = new Person4('Howard');
 p3.name = 'Berny';
 // console.log(p3.name); // Berny
 //7.设计模式 之 单例模式
+// a/外部不能调用 constructor
+// b/每次调用只能返回第一次创建的实例
 class Demo {
   private static _instance: Demo;
   private constructor(public name: string) {};
