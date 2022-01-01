@@ -1,4 +1,5 @@
 # Don't track these folders
 node_modules/
+build/
 data/
 
