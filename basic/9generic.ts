@@ -40,3 +40,22 @@ loop<string>(['a', 'b']);
   }
   const d = new DataManager([{name: 'Sheldon'}]);
 }
+
+//泛型中的 keyof 语法
+
+{
+  interface Person {
+    name: string,
+    gender: string,
+    age: number
+  }
+  class Account {
+    constructor(private user: Person) {}
+    getInfo<T extends keyof Person>(key: T) { // <T extends keyof Person> keyof 相当于循环Person中的key
+      return this.user[key];
+    }
+  }
+  const a = new Account({name: 'Sheldon', gender: 'male', age: 21});
+  const info = a.getInfo('age');
+  console.log(info);
+}
