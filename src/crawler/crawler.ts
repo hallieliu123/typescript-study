@@ -1,7 +1,6 @@
 import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
-import CustomAnalyzer from './customAnalyzer';
 // "dev": "concurrently 'npm run dev:build & npm run dev:start'"
 // "dev": "concurrently npm:dev:*"
 
@@ -34,12 +33,10 @@ class Crawler {
   }
   
   private async _initSpiderProcess() {
-    const filePath = path.resolve(__dirname, '../data/course.json');
+    const filePath = path.resolve(__dirname, '../../data/course.json');
     const html = await this._getRawhtml();
     const data = this.analyzer.analyze(html, filePath);
     this._writeFile(data, filePath);
   }
 }
-const url = 'http://www.dell-lee.com/typescript/demo.html?secret=x3b174jsx';
-const analyzer = CustomAnalyzer.getIntance();
-new Crawler(url, analyzer);
+export default Crawler;
