@@ -1,5 +1,5 @@
 {
-  // "include": ["./src"],
+  "include": ["./src"],
   // "exclude": ["./basic", "./basic/*"],
   // "files": ["./basic/1types.ts"],
 

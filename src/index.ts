@@ -8,7 +8,8 @@
 import express from 'express';
 import cookieSession from 'cookie-session';
 import bodyParser from 'body-parser';
-import router from './router/route';
+import './controller';
+import { router } from './decorator';
 
 const app = express();
 app.use(cookieSession({
@@ -16,7 +17,7 @@ app.use(cookieSession({
   keys: [''],
   // Cookie Options
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
-}))
+}));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(router);
 
