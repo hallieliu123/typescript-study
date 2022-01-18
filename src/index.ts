@@ -21,6 +21,6 @@ app.use(cookieSession({
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(router);
 
-app.listen(3000, () => {
+app.listen(8080, () => {
   console.log('server running');
 });

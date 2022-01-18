@@ -6,7 +6,7 @@ import { getResponseData, checkLogin, BodyRequest } from '../utils';
 import fs from 'fs';
 import Path from 'path';
 
-@controller
+@controller('/api')
 export class CrawlerController {
   @get('/getdata')
   @use(checkLogin)
@@ -15,17 +15,16 @@ export class CrawlerController {
       const url = 'http://www.dell-lee.com/typescript/demo.html?secret=x3b174jsx';
       const analyzer = CustomAnalyzer.getIntance();
       new Crawler(url, analyzer);
-      res.send(getResponseData('success'));
+      res.send(getResponseData<responseResult.getdata>(true, 'success'));
     }catch(err) {
-      res.send(getResponseData('failed'));
+      res.send(getResponseData<responseResult.getdata>(false, 'failed'));
     }
   }
   @get('/showdata')
   @use(checkLogin)
   showData(req: BodyRequest, res: Response) {
     const filePath = Path.resolve(__dirname, '../../data/course.json');
-    const result = fs.readFileSync(filePath, 'utf8');
-    res.send(JSON.parse(result));
+    const result: responseResult.showdata = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    res.send(getResponseData<responseResult.showdata>(result));
   }
 }
-

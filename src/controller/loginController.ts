@@ -2,8 +2,14 @@ import {Router, Request, Response, NextFunction} from 'express';
 import { get, post, controller } from '../decorator';
 import { getResponseData, BodyRequest } from '../utils';
 
-@controller
+@controller('/api')
 export class LoginController {
+  @get('/isloggedin')
+  isLogin(req: BodyRequest, res: Response) {
+    const isLogin = !!(req.session?.isLogin);
+    const result = getResponseData<responseResult.isloggedin>(isLogin);
+    res.send(result);
+  }
   @get('/')
   home(req: BodyRequest, res: Response) {
     if(req.session && req.session.isLogin) {
@@ -16,9 +22,9 @@ export class LoginController {
         </head>
         <body>
           <div>
-            <a href="/getdata">爬取页面</a>
-            <a href='/showdata'>展示爬取内容</a>
-            <a href="/logout">退出登录</a>
+            <a href="/api/getdata">爬取页面</a>
+            <a href='/api/showdata'>展示爬取内容</a>
+            <a href="/api/logout">退出登录</a>
           </div>
         </body>
         </html>
@@ -32,7 +38,7 @@ export class LoginController {
         <title>Document</title>
       </head>
       <body>
-        <form action="/login" method="post">
+        <form action="/api/login" method="post">
           <input type="password" name="password" />
           <button type="submit">提交</button>
         </form>
@@ -43,15 +49,17 @@ export class LoginController {
   @get('/logout')
   logout(req: BodyRequest, res: Response) {
     req.session = null;
-    res.redirect('/');
+    // res.redirect('/');
+    res.send(getResponseData<responseResult.logout>(true));
   }
   @post('/login')
   login(req: BodyRequest, res: Response) {
     const {password} = req.body;
     if(password === '111' && req.session) {
       req.session.isLogin = true;
-      return res.send(getResponseData('success'));
+      const result = getResponseData<responseResult.login>(true, 'success');
+      return res.send(result);
     }
-    res.send(getResponseData('login failed'));
+    res.send(getResponseData<responseResult.login>(false, 'login failed'));
   }
 }

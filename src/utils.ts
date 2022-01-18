@@ -2,14 +2,14 @@ import { Request, Response, NextFunction } from 'express';
 export interface BodyRequest extends Request {
   body: {[key: string]: string | undefined};
 }
-interface responseData {
-  status: string,
-  data?: object,
+interface responseData<T> {
+  info: T,
+  data?: string,
   errorMsg?: string
 }
-export const getResponseData = (status: string, data?: object, errorMsg?: string): responseData => {
+export const getResponseData = <T>(info: T, data?: string, errorMsg?: string): responseData<T> => {
   return {
-    status,
+    info,
     data,
     errorMsg
   }
@@ -19,5 +19,5 @@ export const checkLogin = (req: BodyRequest, res: Response, next: NextFunction) 
   if (req.session && req.session.isLogin) {
     return next();
   }
-  res.send(getResponseData('pls. login first'));
+  res.send(getResponseData(false, 'pls. login first'));
 }

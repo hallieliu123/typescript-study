@@ -1,6 +1,6 @@
 import cheerio from 'cheerio';
 import fs from 'fs';
-import { Analyzer, Course, Info } from './crawler';
+import { Analyzer, CourseItem, CourseData } from './crawler';
 
 export default class CustomAnalyzer implements Analyzer {
   private static _instance: CustomAnalyzer; // 必须加static, 否则一直提示没有assign数据
@@ -11,8 +11,8 @@ export default class CustomAnalyzer implements Analyzer {
     }
     return this._instance;
   }
-  private _getInfo(html: string): Info {
-    const info: Course[] = [];
+  private _getInfo(html: string): CourseData {
+    const info: CourseItem[] = [];
     const $ = cheerio.load(html);
     $('.course-item').map((index, el) => {
       const title = $(el).find('.course-desc').eq(0).text();
@@ -21,8 +21,8 @@ export default class CustomAnalyzer implements Analyzer {
     });
     return {time: new Date().getTime(), course: info};
   }
-  private _concatInfo(info: Info, filePath: string): Info[] {
-    let data: Info[] = [];
+  private _concatInfo(info: CourseData, filePath: string): CourseData[] {
+    let data: CourseData[] = [];
     if (fs.existsSync(filePath)) {
       data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
     }

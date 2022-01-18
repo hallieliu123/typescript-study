@@ -8,13 +8,13 @@ import path from 'path';
 //2.manipulate dom to get specific data
 //3.write the data into a file
 
-export interface Course {
-  title: string,
-  count: number,
+export interface CourseItem {
+  title: string;
+  count: number;
 }
-export interface Info {
-  time: number,
-  course: Course[]
+export interface CourseData {
+  time: number;
+  course: CourseItem[];
 }
 
 export interface Analyzer {
@@ -34,7 +34,7 @@ class Crawler {
   
   private async _initSpiderProcess() {
     const filePath = path.resolve(__dirname, '../../data/course.json');
-    const html = await this._getRawhtml();
+    const html: string = await this._getRawhtml();
     const data = this.analyzer.analyze(html, filePath);
     this._writeFile(data, filePath);
   }
