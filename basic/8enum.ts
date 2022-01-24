@@ -11,7 +11,7 @@ enum Status {
   verified = 2,
   failed,
 }
-const test = (code: number) => {
+const test1 = (code: number) => {
   if(code === Status.qualified) {
     return 'blabla qualified blabla';
   } else if(code === Status.verified) {

@@ -4,7 +4,7 @@ const data = new Date(); // 自动进行类型推断
 
 interface D {
   a: number,
-  b: string,
+  b: string
 }
 const rawData = '{"a": "123", "b": "hello world"}';
 const dataNew: D = JSON.parse(rawData); // 这种情况下可以定义一个类型
