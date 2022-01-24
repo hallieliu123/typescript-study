@@ -23,14 +23,15 @@ console.log(p5.getName()); // 'HaHa'
 //2/类中的访问器装饰器,3个参数与类中普通方法的装饰器一致,并且setter和getter只能有一个有装饰器
 
 //3/类中属性的装饰器,参数只有两个 target(类的prototype), key(属性名称)
-function nameDecorator(targetPrototype: any, key: string) {
+function nameDecorator(targetPrototype: any, key: string): any {
   // targetPrototype[key].name = 'Penny'; //这里是更改不了属性值的,因为这里是prototype中的name属性,而类中定义的是实例中的属性
   const desciptor: PropertyDescriptor = {
-    writable: false
+    writable: true
   };
   return desciptor;
 }
 class Person6 {
+  // @nameDecorator
   name = 'Lenoard';
   getName() {
     return this.name;
@@ -38,7 +39,7 @@ class Person6 {
 }
 const p6 = new Person6();
 p6.name = 'Penny';
-console.log(p6.name); //'Penny'
+console.log('--------->', p6.name); //'Penny'
 
 //4/类中方法的参数装饰器, 3个参数(target:类的prototype,key:方法名,paramIndex:修饰的第几个参数),同样也是编译时执行
 function paramDecorator(prototype: any, key: string, index: number ) {
