@@ -5,7 +5,7 @@ class Person1 {
   getName(){
     return this.name;
   };
-} 
+}
 
 //2.类的继承, 子类覆盖父类中的属性或方法
 class Teacher1 extends Person1 {
@@ -32,8 +32,8 @@ const t2 = new Teacher2();
 
 //4. 类中的属性访问类型
 // public  在类的内外部都可以调用,包括实例
-// private 只能在类的内部调用,继承的类中也不行
 // protected  可以在类的内部及继承的类中调用
+// private 只能在类的内部调用,继承的类中也不行
 class Person2 {
   // public name = 'Lenoad';
   // private name = 'Lenoad';
@@ -120,7 +120,7 @@ const d2 = Demo.getIntance();
   // p.name = 'change name';  // 报错
 }
 
-//9.抽象类 & 类中的抽象方法
+//9.抽象类 & 抽象类中的抽象方法
 {
   abstract class Person { // 抽象类只能被继承使用不能直接实例化
     constructor(public name: string){
@@ -128,7 +128,7 @@ const d2 = Demo.getIntance();
     }
     greet(){
     };
-    abstract sayHi(): string;
+    abstract sayHi(): string; // 抽象类中的抽象方法,继承的子类必须包含此方法的实现
   }
   class Student extends Person {
     constructor(public name: string) {
