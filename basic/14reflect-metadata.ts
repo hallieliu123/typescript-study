@@ -62,7 +62,7 @@ class User {
   getAge(){}
 }
 function test() {
-  for(let item in User.prototype) {
+  for(let item in User.prototype) { // 类的原型是不可枚举的，这里有错误，要用：Obejct.getOwnPropertyNames(User.prototype)来获取每个键名
     const data = Reflect.getMetadata('key', User.prototype, item);
     console.log('data--->', data); //value getName, value getAge
   }
