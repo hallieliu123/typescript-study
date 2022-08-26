@@ -13,7 +13,7 @@ function getResult(): void {
 
 }
 
-//3. never: 函数不能执行完
+//3. never: 函数跑出错误,不能执行完
 
 function test(): never {
   // while (true){ }
